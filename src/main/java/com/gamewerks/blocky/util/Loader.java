@@ -12,8 +12,8 @@ public class Loader {
         boolean[][] rotation = new boolean[4][4];
         for (int row = 3; row >= 0; row--) {
             String line = in.nextLine();
-            for (int col = 0; col < 5; col++) {
-                rotation[row][col] = line.charAt(col) == 'x';
+            for (int col = 0; col < 4; col++) { //we iterate through 5 columns (indexis 0 to 4) while the rotation array only holds 4 values (0 to 3). We change clumn to iterate only through 4 values (indexes 0-3)
+                rotation[row][col] = line.charAt(col) == 'x'; //this is the final line from the main function that fails
             }
         }
         return rotation;
