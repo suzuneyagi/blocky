@@ -4,11 +4,11 @@ _(Gamewerks corporation internal code—do not share!)_
 
 ## Credits
 
-Primary developer: _(TODO: fill me in)_
+Primary developer: Suzune Yagi, Marria
 
 ### Resources Used
 
-+ _(TODO: fill me in)_
++ _(TODO: fill me in)
 + ...
 + ...
 
