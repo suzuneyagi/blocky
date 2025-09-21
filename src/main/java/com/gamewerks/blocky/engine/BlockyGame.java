@@ -21,6 +21,7 @@ public class BlockyGame {
     
     private void trySpawnBlock() {
         if (activePiece == null) {
+            //Here we initialize the hight by subtracting 20, so that the block spawns at the top
             activePiece = new Piece(PieceKind.I, new Position(Constants.BOARD_HEIGHT - 1, Constants.BOARD_WIDTH / 2 - 2));
             if (board.collides(activePiece)) {
                 System.exit(0);
@@ -50,6 +51,7 @@ public class BlockyGame {
     }
     
     private void processGravity() {
+        //we are moving in HEIGHT from 1 to 22, so instead of subtracting 1, we add 1
         Position nextPos = activePiece.getPosition().add(-1, 0);
         if (!board.collides(activePiece.getLayout(), nextPos)) {
             lockCounter = 0;
@@ -73,10 +75,11 @@ public class BlockyGame {
         //We saw that processMovement() was highlighting yellow, which means it wasn't used
         //To allow the piece to move left and right, we added the processMovement() call here.
         //It seems that step contains and calls the major functions we need to play the game 
-        trySpawnBlock();
-        processGravity();
-        processMovement();
         processClearedLines();
+        trySpawnBlock();
+        processMovement();
+        processGravity();
+        
     }
     
     public boolean[][] getWell() {
