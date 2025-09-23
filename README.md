@@ -13,7 +13,7 @@ Primary developer: Suzune Yagi, Marria
 ### Resources Used
 
 + _(TODO: fill me in)
-+ ...
++ Random class documentation: https://docs.oracle.com/javase/8/docs/api/java/util/Random.html
 + ...
 
 ## Changelog
