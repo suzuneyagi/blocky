@@ -7,7 +7,7 @@ import com.gamewerks.blocky.util.Loader;
 import com.gamewerks.blocky.util.Position;
 
 public class Piece {
-    private int currentIndex = 0;
+    private static int currentIndex;
     
     private static HashMap ROTATION_DATA = null;
     
@@ -60,7 +60,6 @@ public class Piece {
             currentIndex = 0;
         }
         PieceKind returnPiece = PieceKind.ALL[currentIndex++];
-        System.out.println(currentIndex);
         return returnPiece;
     }
 }
