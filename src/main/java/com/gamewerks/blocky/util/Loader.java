@@ -7,7 +7,15 @@ import java.util.Scanner;
 
 import com.gamewerks.blocky.engine.PieceKind;
 
+/**
+ * Rotates the block, reading the user inputs
+ */
 public class Loader {
+    /**
+     * 
+     * @param in the scanner providing the block rotation data
+     * @return a 2D array representing the rotation layout
+     */
     private static boolean[][] readRotation(Scanner in) {
         boolean[][] rotation = new boolean[4][4];
         for (int row = 3; row >= 0; row--) {
@@ -19,7 +27,12 @@ public class Loader {
         return rotation;
     }
     
-    
+    /**
+     * 
+     * @param piece the type of the block stored in PieceKind
+     * @return 3D boolean array where the first index selects the rotation status
+     * @throws IOException if the data file cannot be read
+     */
     public static boolean[][][] loadRotationData(PieceKind piece) throws IOException {
         boolean[][][] data = new boolean[4][][];
         File file = new File(Constants.DATA_PATH, piece.toString() + ".data");
@@ -34,6 +47,11 @@ public class Loader {
         return data;
     }
     
+    /**
+     * 
+     * @return a HashMap 
+     * @throws IOException if the data file cannot be read
+     */
     public static HashMap loadAllRotationData() throws IOException {
         HashMap ret = new HashMap();
         for (int i = 0; i < PieceKind.ALL.length; i++) {

@@ -3,6 +3,9 @@ package com.gamewerks.blocky.engine;
 import com.gamewerks.blocky.util.Constants;
 import com.gamewerks.blocky.util.Position;
 
+/**
+ * Set up the game board and execute the block-movement functions
+ */
 public class BlockyGame {
     private static final int LOCK_DELAY_LIMIT = 30;
     
@@ -12,6 +15,9 @@ public class BlockyGame {
     
     private int lockCounter;
     
+    /**
+     * Initialization of the board
+     */
     public BlockyGame() {
         board = new Board();
         movement = Direction.NONE;
@@ -19,6 +25,9 @@ public class BlockyGame {
         trySpawnBlock();
     }
     
+    /**
+     * Initialize the block positions and where it is spawned
+     */
     private void trySpawnBlock() {
         if (activePiece == null) {
             //Here we initialize the hight by subtracting 20, so that the block spawns at the top
@@ -28,7 +37,10 @@ public class BlockyGame {
             }
         }
     }
-    
+
+    /**
+     * Read the movement input and executes accordingly
+     */
     private void processMovement() {
         Position nextPos;
         //When we launched the game, we couldn't move, so we decided to look at this method
@@ -50,8 +62,10 @@ public class BlockyGame {
         }
     }
     
+    /**
+     * Process the down to bottom movements of the block, checking the validity of the movement
+     */
     private void processGravity() {
-        //we are moving in HEIGHT from 1 to 22, so instead of subtracting 1, we add 1
         Position nextPos = activePiece.getPosition().add(-1, 0);
         if (!board.collides(activePiece.getLayout(), nextPos)) {
             lockCounter = 0;
@@ -67,10 +81,16 @@ public class BlockyGame {
         }
     }
     
+    /**
+     * Delete the row on the board if it is filled
+     */
     private void processClearedLines() {
         board.deleteRows(board.getCompletedRows());
     }
     
+    /**
+     * Execute the steps to move the blocks
+     */
     public void step() {
         //We saw that processMovement() was highlighting yellow, which means it wasn't used
         //To allow the piece to move left and right, we added the processMovement() call here.
@@ -81,6 +101,10 @@ public class BlockyGame {
         processClearedLines();
     }
     
+    /**
+     * 
+     * @return 2D boolean array
+     */
     public boolean[][] getWell() {
         return board.getWell();
     }

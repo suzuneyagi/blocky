@@ -11,10 +11,16 @@ import com.gamewerks.blocky.engine.BlockyGame;
 import com.gamewerks.blocky.engine.Direction;
 import com.gamewerks.blocky.gfx.BlockyPanel;
 
+/**
+ * This class initializes the main game window, sets up the game board, and takes the user inputs
+ */
 public class Blocky {
     private static final int FPS = 10;
     private static final double SPF = 1000000000.0 / FPS;
-    
+    /**
+     * 
+     * @param args user input
+     */
     public static void main(String[] args) {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -26,6 +32,9 @@ public class Blocky {
         frame.pack();
         frame.setVisible(true);
         
+        /**
+         * Read user inputs from keyboard, change directions and rotate the blocks accordingly
+         */
         frame.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
                 int code = e.getKeyCode();
@@ -50,6 +59,10 @@ public class Blocky {
         
         long timeElapsed = 0;
         long prevTime = System.nanoTime();
+
+        /**
+         * Animate the game
+         */
         while (true) {
             long currentTime = System.nanoTime();
             timeElapsed += currentTime - prevTime;
