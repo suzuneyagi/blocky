@@ -83,7 +83,7 @@ public class Board {
         List completedRows = new LinkedList();
         for (int row = 0; row < Constants.BOARD_HEIGHT; row++) {
             if (isCompletedRow(row)) {
-                completedRows.add(row); //passing row (not boolean) so that delection works
+                completedRows.add(row); //passing row (not boolean) so that delection
             }
         }
         return completedRows;

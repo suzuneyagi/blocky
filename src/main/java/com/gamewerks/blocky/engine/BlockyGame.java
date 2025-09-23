@@ -75,11 +75,10 @@ public class BlockyGame {
         //We saw that processMovement() was highlighting yellow, which means it wasn't used
         //To allow the piece to move left and right, we added the processMovement() call here.
         //It seems that step contains and calls the major functions we need to play the game 
-        processClearedLines();
         trySpawnBlock();
         processMovement();
         processGravity();
-        
+        processClearedLines();
     }
     
     public boolean[][] getWell() {
