@@ -7,6 +7,7 @@ import com.gamewerks.blocky.util.Loader;
 import com.gamewerks.blocky.util.Position;
 
 public class Piece {
+    private int currentIndex = 0;
     
     private static HashMap ROTATION_DATA = null;
     
@@ -24,7 +25,7 @@ public class Piece {
     private Position pos;
     
     public Piece(PieceKind kind, Position pos) {
-        this.kind = kind;
+        this.kind = getNextPiece();
         orientation = 1;
         this.pos = pos;
     }
@@ -48,5 +49,18 @@ public class Piece {
             int k = orientation - 1;
             orientation = k < 0 ? 3 : k;
         }
+    }
+
+    //Random block generation
+
+    //return the current piece and reshuffle array if run out of pieces
+    public PieceKind getNextPiece(){
+        if(currentIndex >= PieceKind.ALL.length){
+            PieceKind.shuffle(PieceKind.ALL);
+            currentIndex = 0;
+        }
+        PieceKind returnPiece = PieceKind.ALL[currentIndex++];
+        System.out.println(currentIndex);
+        return returnPiece;
     }
 }
