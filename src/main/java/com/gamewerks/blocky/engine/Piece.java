@@ -6,6 +6,9 @@ import java.util.HashMap;
 import com.gamewerks.blocky.util.Loader;
 import com.gamewerks.blocky.util.Position;
 
+/**
+ * This class maintains the pieces (blocks) of the game according to the user input and reshuffles the blocks.
+ */
 public class Piece {
     private static int currentIndex;
     
@@ -24,20 +27,37 @@ public class Piece {
     private int orientation;
     private Position pos;
     
+    /**
+     * 
+     * @param kind a parameter that is chosen randomly
+     * @param pos the initial position of the block on the board
+     */
     public Piece(PieceKind kind, Position pos) {
         this.kind = getNextPiece();
-        orientation = 1;
+        orientation = 0;
         this.pos = pos;
     }
     
+    /**
+     * 
+     * @return a set of Position value which consists of row and column
+     */
     public Position getPosition() {
         return pos;
     }
     
+    /**
+     * 
+     * @param p changes the current position pos to the new input position p
+     */
     public void moveTo(Position p) {
         pos = p;
     }
     
+    /**
+     * 
+     * @return a new position after rotation
+     */
     public boolean[][] getLayout() {
         return ((boolean[][][]) ROTATION_DATA.get(kind))[orientation];
     }
@@ -51,9 +71,10 @@ public class Piece {
         }
     }
 
-    //Random block generation
-
-    //return the current piece and reshuffle array if run out of pieces
+    /**
+     * 
+     * @return the current piece in the array of PieceKind. Randomly shuffle the elements if runs out.
+     */
     public PieceKind getNextPiece(){
         if(currentIndex >= PieceKind.ALL.length){
             PieceKind.shuffle(PieceKind.ALL);
