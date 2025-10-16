@@ -1,5 +1,4 @@
 package com.gamewerks.blocky.engine;
-
 import com.gamewerks.blocky.util.Constants;
 import com.gamewerks.blocky.util.Position;
 
