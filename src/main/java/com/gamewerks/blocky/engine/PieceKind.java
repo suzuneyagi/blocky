@@ -10,14 +10,14 @@ public enum PieceKind {
     S,
     T,
     Z;
-    
+
     public static final PieceKind[] ALL = { I, J, L, O, S, T, Z };
 
     int current = 0;
 
-    public static void shuffle (PieceKind[] ALL){
+    public static void shuffle(PieceKind[] ALL) {
         Random rand = new Random();
-        for (int i = ALL.length -1; i > 0; i--){
+        for (int i = ALL.length - 1; i > 0; i--) {
             int j = rand.nextInt(i + 1);
             PieceKind temp = ALL[i];
             ALL[i] = ALL[j];

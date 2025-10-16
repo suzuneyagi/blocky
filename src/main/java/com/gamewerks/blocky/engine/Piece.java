@@ -7,13 +7,14 @@ import com.gamewerks.blocky.util.Loader;
 import com.gamewerks.blocky.util.Position;
 
 /**
- * This class maintains the pieces (blocks) of the game according to the user input and reshuffles the blocks.
+ * This class maintains the pieces (blocks) of the game according to the user
+ * input and reshuffles the blocks.
  */
 public class Piece {
     private static int currentIndex;
-    
+
     private static HashMap ROTATION_DATA = null;
-    
+
     static {
         try {
             ROTATION_DATA = Loader.loadAllRotationData();
@@ -22,22 +23,22 @@ public class Piece {
             System.exit(-1);
         }
     }
-    
+
     private PieceKind kind;
     private int orientation;
     private Position pos;
-    
+
     /**
      * 
      * @param kind a parameter that is chosen randomly
-     * @param pos the initial position of the block on the board
+     * @param pos  the initial position of the block on the board
      */
     public Piece(PieceKind kind, Position pos) {
         this.kind = getNextPiece();
         orientation = 0;
         this.pos = pos;
     }
-    
+
     /**
      * 
      * @return a set of Position value which consists of row and column
@@ -45,7 +46,7 @@ public class Piece {
     public Position getPosition() {
         return pos;
     }
-    
+
     /**
      * 
      * @param p changes the current position pos to the new input position p
@@ -53,7 +54,7 @@ public class Piece {
     public void moveTo(Position p) {
         pos = p;
     }
-    
+
     /**
      * 
      * @return a new position after rotation
@@ -61,7 +62,7 @@ public class Piece {
     public boolean[][] getLayout() {
         return ((boolean[][][]) ROTATION_DATA.get(kind))[orientation];
     }
-    
+
     public void rotate(boolean dir) {
         if (dir) {
             orientation = (orientation + 1) % 4;
@@ -73,10 +74,11 @@ public class Piece {
 
     /**
      * 
-     * @return the current piece in the array of PieceKind. Randomly shuffle the elements if runs out.
+     * @return the current piece in the array of PieceKind. Randomly shuffle the
+     *         elements if runs out.
      */
-    public PieceKind getNextPiece(){
-        if(currentIndex >= PieceKind.ALL.length){
+    public PieceKind getNextPiece() {
+        if (currentIndex >= PieceKind.ALL.length) {
             PieceKind.shuffle(PieceKind.ALL);
             currentIndex = 0;
         }
